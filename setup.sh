@@ -59,14 +59,6 @@ echo "=== Priming first-boot configuration"
 
 /usr/sbin/sysidconfig -b $ZROOT -a /lib/svc/method/sshd
 
-cp overlay/lib/svc/method/zoneconfig ${ZROOT}/lib/svc/method/zoneconfig
-chown root:bin ${ZROOT}/lib/svc/method/zoneconfig
-chmod 0755 ${ZROOT}/lib/svc/method/zoneconfig
-
-cp overlay/lib/svc/manifest/system/zoneconfig.xml ${ZROOT}/lib/svc/manifest/system/zoneconfig.xml
-chmod 0444 ${ZROOT}/lib/svc/manifest/system/zoneconfig.xml
-chown root:sys ${ZROOT}/lib/svc/manifest/system/zoneconfig.xml
-
 echo "=== Archiving"
 ZPATHFS=$(zfs list -Ho name ${ZONEPATH})
 zfs snapshot ${ZPATHFS}@save
